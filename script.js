@@ -16,7 +16,7 @@ class Calculator {
     }
 
     appendNumber(number) {
-        this.currentOperand = number;
+        this.currentOperand = this.currentOperand.toString() + number.toString(); //now numbers will add at the end of the list in the calc output
     }
 
     chooseOperation(operation) {
@@ -33,20 +33,21 @@ class Calculator {
 }
 
 
-const numberBtns = document.querySelectorAll('[data-number]')
-const operationBtns = document.querySelectorAll('[data-operation]')
-const equalsBtn = document.querySelector('[data-equals]')
-const deleteBtn = document.querySelector('[data-equals]')
-const allClearBtn = document.querySelector('[data-all-clear]')
+const numberButtons = document.querySelectorAll('[data-number]')
+const operationButtons = document.querySelectorAll('[data-operation]')
+const equalsButton = document.querySelector('[data-equals]')
+const deleteButton = document.querySelector('[data-equals]')
+const allClearButton = document.querySelector('[data-all-clear]')
 const previousOperandTextElement = document.querySelector('[data-previous-operand]')
 const currentOperandTextElement = document.querySelector('[data-current-operand]')
 
 
 const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
 
-numberBtns.forEach(button => {
+numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         calculator.appendNumber(button.innerText)
         calculator.updateDisplay();
     })
 }) 
+
